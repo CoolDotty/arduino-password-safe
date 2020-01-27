@@ -23,7 +23,7 @@ SAFEBOX_FILE = 'countermail_safebox.asc'
 def decodeDescription(cred):
     # Get the most out of the 8.3 filename limitation
 
-    full = decode(cred['short_description']).decode('utf-8')
+    full = decode(cred['short_description']).decode('utf-8').upper()
     if len(full) > 8:
         return full[:8] + '.' + full[8:11]
     else:
@@ -67,7 +67,7 @@ with open(SAFEBOX_FILE, 'r') as cm_file:
             with open(description, 'w') as out:
                 out.write(password)
     print('... Done!')
-    print('Deleting safebox ...')
-    os.remove(SAFEBOX_FILE);
-    print('... Done!')
+print('Deleting safebox ...')
+os.remove(SAFEBOX_FILE);
+print('... Done!')
 exit(0)
